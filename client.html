@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>runner</title>
+	<style type="text/css">
+		button {
+			width: 100%;
+			height: 10vh;
+			font-size: 50px;
+			font-weight: 900;
+			margin-top: 7vh;
+			border:0.1em solid black;
+			border-radius:0.12em;
+			font-family:'Roboto',sans-serif;
+		}
+		div.video button {
+			background-color: #00c4ff;
+		}
+
+		div.audio button {
+			background-color: #7bd67b;
+		}
+	</style>
+</head>
+<body>
+	<div class="video">
+		<button>tv</button>
+		<button>monitor</button>
+		<button>fifa19</button>
+	</div>
+
+	<div class="audio">
+		<button>headphone</button>
+		<button>dinamics</button>
+		<button>lgtv</button>
+	</div>
+
+	<button>poweroff</button>
+
+	<script type="text/javascript">
+		document.querySelectorAll('button').forEach(button => {
+			button.addEventListener('click', e => {
+				let buttonText = e.target.textContent;
+				console.log('click on' + buttonText);
+				fetch(
+					'http://192.168.0.101:7777?run=' + buttonText,
+					{mode: 'no-cors'}
+				)
+			});
+		})
+	</script>
+</body>
+</html>
