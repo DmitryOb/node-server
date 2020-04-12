@@ -1,10 +1,10 @@
-// this serve may be installed like service
-// npm install -g pm2
-// npm install pm2-windows-startup -g
+// this script may be installed like service
+
+// npm install pm2 pm2-windows-startup -g
+
 // pm2-startup install
 // pm2 save
 // pm2 start serv.js
-
 // pm2 ls // список прописавшихся в авторан скриптов
 let http = require('http');
 let url = require('url');
@@ -17,7 +17,7 @@ let server = http.createServer(function (request, response) {
 
     let run = queryData.run;
     switch (run) {
-        case 'tv':
+        case 'monitor':
             console.log('we recive' + run);
             nodeCmd.get(
                 'displayswitch.exe/internal', 
@@ -25,7 +25,7 @@ let server = http.createServer(function (request, response) {
             );
             response.end();
             break;
-        case 'monitor':
+        case 'tv':
             console.log('we recive' + run);
             nodeCmd.get(
                 'displayswitch.exe/external', 
